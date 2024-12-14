@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 from sdv.single_table import GaussianCopulaSynthesizer
 from sdv.metadata import Metadata
 from ctgan import CTGAN
-from synthcity.plugins import Plugins
+#from synthcity.plugins import Plugins
 
 rng = np.random.default_rng(42)
 
@@ -27,11 +27,11 @@ class CTGANDataGenerator(TabularDataGenerator):
         super().__init__()
         self.epochs = epochs
         self.discrete_columns = discrete_columns
-        self.ctgan = CTGAN()
+        self.ctgan = CTGAN(verbose=True)
+        self.ctgan.set_random_state(42)
 
     def train(self, training_data: pd.DataFrame):
         """Train the CTGAN on the provided training data."""
-        self.ctgan.set_random_state(42)
         self.ctgan.fit(training_data, self.discrete_columns, epochs=self.epochs)
 
     def generate(self, num_samples: int) -> pd.DataFrame:
@@ -75,7 +75,7 @@ class MixupDataGenerator(TabularDataGenerator):
             sample2 = self.training_data.iloc[idx2].values
             
             # Generate a random lambda value from a beta distribution
-            lambda_value = np.random.beta(self.alpha, self.alpha)
+            lambda_value = rng.beta(self.alpha, self.alpha)
             
             # Create a new sample as a mix of the two samples
             mixed_sample = lambda_value * sample1 + (1 - lambda_value) * sample2

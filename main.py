@@ -6,7 +6,6 @@ import shutil
 from process import DataPreprocessor
 from attack import DistanceBasedMembershipInference, DistributionBasedMembershipInference, MonteCarloMembershipInference, DOMIAS, PrivacyMetricsEvaluator
 from utility import UtilityEvaluator
-import ace_tools_open as tools
 from sklearn.model_selection import train_test_split
 import numpy as np
 import matplotlib.pyplot as plt
@@ -48,12 +47,12 @@ def split_dataset(dataset_name, label, iterations, split_ratio=0.8):
     dp = DataPreprocessor()
     df_enc = dp.fit_transform(df)
 
-    for i in iterations:
+    for i in range(1, iterations+1):
         # Shuffle the dataset
-        df_enc = df_enc.sample(frac=1, random_state=split_seeds[i]).reset_index(drop=True)
+        df_enc = df_enc.sample(frac=1, random_state=split_seeds[i-1]).reset_index(drop=True)
 
         # Split the dataset, keeping balanced classes
-        train_set, test_set = train_test_split(df_enc, train_size=split_ratio, stratify=df_enc[label], random_state=split_seeds[i])
+        train_set, test_set = train_test_split(df_enc, train_size=split_ratio, stratify=df_enc[label], random_state=split_seeds[i-1])
 
         #reference set for DOMIAS
         reference_set = train_set[:2000]
