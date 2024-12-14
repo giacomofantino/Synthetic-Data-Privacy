@@ -4,7 +4,14 @@ from abc import ABC, abstractmethod
 from sdv.single_table import GaussianCopulaSynthesizer
 from sdv.metadata import Metadata
 from ctgan import CTGAN
+import torch
+import os
 #from synthcity.plugins import Plugins
+
+#replicate results of GANs
+os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
+torch.manual_seed(42)
+torch.use_deterministic_algorithms(True)
 
 rng = np.random.default_rng(42)
 
