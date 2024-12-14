@@ -1,7 +1,7 @@
 import argparse
 import os
 import pandas as pd
-from generators import MixupDataGenerator, CTGANDataGenerator, PATEGANDataGenerator, SDVDataGenerator
+from generators import MixupDataGenerator, CTGANDataGenerator, PATEGANDataGenerator, TVAEDataGenerator
 import shutil
 from process import DataPreprocessor
 from attack import DistanceBasedMembershipInference, DistributionBasedMembershipInference, MonteCarloMembershipInference, DOMIAS, PrivacyMetricsEvaluator
@@ -127,7 +127,7 @@ def generate_synthetic_data(generator_name, dataset_name, num_samples, identifie
         elif generator_name == 'PATE-GAN':
             generator = PATEGANDataGenerator(epochs=epochs)
         elif generator_name == 'SDV':
-            generator = SDVDataGenerator()
+            generator = TVAEDataGenerator()
         else:
             raise ValueError(f"Generator '{generator_name}' is not recognized.")
     

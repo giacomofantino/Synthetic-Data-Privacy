@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from abc import ABC, abstractmethod
-from sdv.single_table import GaussianCopulaSynthesizer
+from sdv.single_table import TVAESynthesizer
 from sdv.metadata import Metadata
 from ctgan import CTGAN
 import torch
@@ -96,14 +96,14 @@ class MixupDataGenerator(TabularDataGenerator):
 
         return synthetic_data
 
-class SDVDataGenerator(TabularDataGenerator):
+class TVAEDataGenerator(TabularDataGenerator):
     def __init__(self):
         super().__init__()
 
     def train(self, training_data: pd.DataFrame):
         """Train the SDV model on the provided training data."""
         metadata = Metadata.detect_from_dataframe(data=training_data)
-        self.model = GaussianCopulaSynthesizer(metadata=metadata, default_distribution='gaussian_kde')
+        self.model = TVAESynthesizer(metadata=metadata, epochs=100)
         self.model.fit(training_data)
 
     def generate(self, num_samples: int) -> pd.DataFrame:
