@@ -101,11 +101,11 @@ class TVAEDataGenerator(TabularDataGenerator):
         super().__init__()
 
     def train(self, training_data: pd.DataFrame):
-        """Train the SDV model on the provided training data."""
+        """Train the TVAE model on the provided training data."""
         metadata = Metadata.detect_from_dataframe(data=training_data)
         self.model = TVAESynthesizer(metadata=metadata, epochs=100)
         self.model.fit(training_data)
 
     def generate(self, num_samples: int) -> pd.DataFrame:
-        """Generate synthetic data samples using the trained SDV model."""
+        """Generate synthetic data samples using the trained TVAE model."""
         return self.model.sample(num_rows=num_samples)

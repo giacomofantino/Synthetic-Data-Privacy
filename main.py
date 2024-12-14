@@ -126,7 +126,7 @@ def generate_synthetic_data(generator_name, dataset_name, num_samples, identifie
             generator = CTGANDataGenerator(epochs=epochs, discrete_columns=discrete_columns)
         elif generator_name == 'PATE-GAN':
             generator = PATEGANDataGenerator(epochs=epochs)
-        elif generator_name == 'SDV':
+        elif generator_name == 'TVAE':
             generator = TVAEDataGenerator()
         else:
             raise ValueError(f"Generator '{generator_name}' is not recognized.")
