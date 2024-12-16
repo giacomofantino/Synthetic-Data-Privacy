@@ -111,7 +111,7 @@ def generate_synthetic_data(generator_name, dataset_name, num_samples, identifie
             'income_class'
         ]
         
-        epochs = 50
+        epochs = 150
     elif dataset_name == "titanic":
         integer_columns = ['Survived','Pclass','Sex','Age','SibSp','Parch','Ticket','Cabin','Embarked']
         epochs=100
@@ -121,13 +121,13 @@ def generate_synthetic_data(generator_name, dataset_name, num_samples, identifie
         if generator_name == 'mixup':
             generator = MixupDataGenerator(integer_columns)
         elif generator_name == 'mixup_privacy':
-            generator = MixupDataGenerator(integer_columns, alpha=1)  # TODO: consider a better value eventually (possibly use beta)
+            generator = MixupDataGenerator(integer_columns, alpha=3)  # TODO: consider a better value eventually (possibly use beta)
         elif generator_name == 'CTGAN':
             generator = CTGANDataGenerator(epochs=epochs, discrete_columns=discrete_columns)
         elif generator_name == 'PATE-GAN':
             generator = PATEGANDataGenerator(epochs=epochs)
         elif generator_name == 'TVAE':
-            generator = TVAEDataGenerator()
+            generator = TVAEDataGenerator(epochs=epochs)
         else:
             raise ValueError(f"Generator '{generator_name}' is not recognized.")
     

@@ -26,7 +26,6 @@ class UtilityEvaluator:
         X_synthetic = self.synthetic_data.drop(columns=label)
         y_synthetic = self.synthetic_data[label]
 
-        #right now based on CTGAN. I want to understand if we can rewrite it
         real_corr = associations(self.training_data, nominal_columns=categorical_columns, compute_only=True)['corr']
 
         fake_corr = associations(self.synthetic_data, nominal_columns=categorical_columns, compute_only=True)['corr']

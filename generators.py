@@ -1,18 +1,17 @@
 import pandas as pd
 import numpy as np
 from abc import ABC, abstractmethod
-from sdv.single_table import TVAESynthesizer
+from ctgan.synthesizers import TVAE
 from sdv.metadata import Metadata
 from ctgan import CTGAN
 import torch
 import os
-#from synthcity.plugins import Plugins
+#from pate_gan import pategan
 
 #replicate results of GANs
 os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
 torch.manual_seed(42)
 torch.use_deterministic_algorithms(True)
-
 rng = np.random.default_rng(42)
 
 class TabularDataGenerator(ABC):
@@ -97,15 +96,20 @@ class MixupDataGenerator(TabularDataGenerator):
         return synthetic_data
 
 class TVAEDataGenerator(TabularDataGenerator):
-    def __init__(self):
+    def __init__(self, epochs=100, discrete_columns=[]):
         super().__init__()
+        self.epochs=epochs
+        self.discrete_columns = discrete_columns
+        self.model = TVAE(epochs=self.epochs, verbose=True)
+        self.model.set_random_state(42)
 
     def train(self, training_data: pd.DataFrame):
         """Train the TVAE model on the provided training data."""
-        metadata = Metadata.detect_from_dataframe(data=training_data)
-        self.model = TVAESynthesizer(metadata=metadata, epochs=100)
-        self.model.fit(training_data)
+        self.model.fit(training_data, self.discrete_columns)
 
     def generate(self, num_samples: int) -> pd.DataFrame:
         """Generate synthetic data samples using the trained TVAE model."""
-        return self.model.sample(num_rows=num_samples)
+        if self.model == None:
+            print('error, model not yet trained')
+            return None
+        return self.model.sample(num_samples)
