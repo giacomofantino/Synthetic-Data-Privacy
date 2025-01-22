@@ -12,7 +12,7 @@ To facilitate reproducibility, we have included:
 
 The datasets used in this study are publicly available and can be downloaded from:
 - **Adult Income Dataset**: [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/datasets/adult)
-- **Give Me Some Credit Dataset**: [Kaggle](https://www.kaggle.com/competitions/GiveMeSomeCredit/data)
+- **South German Credit**: [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/573/south+german+credit+update)
 - **COMPAS Dataset**: [ProPublica](https://github.com/propublica/compas-analysis)
 
 These datasets are provided in their original form and used in our experiments without modifications.
