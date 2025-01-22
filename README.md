@@ -1,6 +1,6 @@
 # Quantifying Privacy Risks in Synthetic Data: A Study on Black-Box Membership Inference
 
-This repository contains the code used for the paper **"Quantifying Privacy Risks in Synthetic Data: A Study on Black-Box Membership Inference."** This study evaluates the privacy risks associated with synthetic tabular data generation, specifically through black-box Membership Inference Attacks (MIAs). The experiments and methodologies used in the paper are implemented in this repository, ensuring replicability to the best extent possible.
+This study evaluates the privacy risks associated with synthetic tabular data generation, specifically through black-box Membership Inference Attacks (MIAs). The experiments and methodologies used in the paper are implemented in this repository, ensuring replicability to the best extent possible.
 
 ## Replicability Measures
 
