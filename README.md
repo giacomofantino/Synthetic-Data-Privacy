@@ -49,7 +49,7 @@ In our analysis, `seq` was always a list of numbers from 1 to 30 (e.g., `1,2,3,.
 
 ## Using CTAB-GAN+
 
-We employed **CTAB-GAN+** as one of the synthetic data generators in our study. However, due to the lack of a published license in its repository, we have decided not to include its source code in this repository to avoid legal issues.
+We employed **CTAB-GAN+** as one of the synthetic data generators in our study. However, due to the lack of a published license in its [repository](https://github.com/Team-TUD/CTAB-GAN-Plus-DP), we have decided not to include its source code in this repository to avoid legal issues.
 
 To reproduce the results for CTAB-GAN+, you need to:
 1. Download the **CTAB-GAN+** code from its original repository.
