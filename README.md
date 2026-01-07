@@ -15,7 +15,7 @@ The datasets used in this study are publicly available and can be downloaded fro
 - **South German Credit**: [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/573/south+german+credit+update)
 - **COMPAS Dataset**: [ProPublica](https://github.com/propublica/compas-analysis)
 
-ach dataset underwent preprocessing to ensure consistency and privacy compliance: duplicates and missing values were removed, and features typically excluded in standard machine learning pipelines, including identifiers that could link a record to an individual, were dropped.
+Each dataset underwent preprocessing to ensure consistency: duplicates and missing values were removed, and features typically excluded in standard machine learning pipelines, including identifiers that could link a record to an individual, were dropped.
 
 ## Reproducing Results
 
