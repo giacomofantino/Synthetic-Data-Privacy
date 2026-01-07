@@ -15,7 +15,7 @@ The datasets used in this study are publicly available and can be downloaded fro
 - **South German Credit**: [UCI Machine Learning Repository](https://archive.ics.uci.edu/dataset/573/south+german+credit+update)
 - **COMPAS Dataset**: [ProPublica](https://github.com/propublica/compas-analysis)
 
-These datasets are provided in their original form and used in our experiments without modifications.
+ach dataset underwent preprocessing to ensure consistency and privacy compliance: duplicates and missing values were removed, and features typically excluded in standard machine learning pipelines, including identifiers that could link a record to an individual, were dropped.
 
 ## Reproducing Results
 
@@ -49,18 +49,17 @@ In our analysis, `seq` was always a list of numbers from 1 to 30 (e.g., `1,2,3,.
 
 ## Using CTAB-GAN+
 
-We employed **CTAB-GAN+** as one of the synthetic data generators in our study. However, due to the lack of a published license in its [repository](https://github.com/Team-TUD/CTAB-GAN-Plus-DP), we have decided not to include its source code in this repository to avoid legal issues.
+We include **CTAB-GAN+** in this repository (under `CTABGAN`) as one of the synthetic data generators used in our study.
 
-To reproduce the results for CTAB-GAN+, you need to:
-1. Download the **CTAB-GAN+** code from its original repository.
-2. Place it in the designated folder within this repository.
-3. Apply the following modifications:
-   - Modify the `_init_` function to allow changes to parameters such as **epochs, batch size, and discriminator steps**.
-   - Update **BayesianGaussianMixture** in `transformer.py` to ensure compatibility with future versions.
+The original implementation is maintained at: https://github.com/Team-TUD/CTAB-GAN-Plus-DP
+According to the project authors, CTAB-GAN+ DP is available under the **Apache License 2.0** (see [issue #3](https://github.com/Team-TUD/CTAB-GAN-Plus-DP/issues/3)).
 
-Once a license is added to the official CTAB-GAN+ repository, we plan to publish our modified version for better reproducibility.
+### Modifications
+To support reproducibility and forward compatibility, we applied the following changes:
+
+- Updated the `__init__` function to allow configuring parameters such as **epochs**, **batch size**, and **discriminator steps**.
+- Updated the usage of **BayesianGaussianMixture** in `transformer.py` to improve compatibility with newer versions of `scikit-learn`.
 
 ---
 
 We appreciate your interest in our work and hope this repository helps advance research on synthetic data privacy!
-
