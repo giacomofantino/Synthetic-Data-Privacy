@@ -1,0 +1,36 @@
+message: "If you use this software or dataset in your research, please cite it."
+title: "Quantifying Privacy Risks in Synthetic Data: A Study on Black-Box Membership Inference"
+type: software
+authors:
+  - family-names: Fantino
+    given-names: Giacomo
+  - family-names: Rondina
+    given-names: Marco
+  - family-names: Vetrò
+    given-names: Antonio
+  - family-names: De Martin
+    given-names: Juan Carlos
+license: MIT
+repository-code: "https://github.com/giacomofantino/Synthetic-Data-Privacy"
+url: "https://github.com/giacomofantino/Synthetic-Data-Privacy"
+abstract: "Code and data accompanying the paper: Quantifying Privacy Risks in Synthetic Data."
+keywords:
+  - synthetic data
+  - privacy
+  - membership inference
+  - tabular data
+preferred-citation:
+  type: conference-paper
+  title: "Quantifying Privacy Risks in Synthetic Data: A Study on Black-Box Membership Inference"
+  authors:
+    - family-names: Fantino
+      given-names: Giacomo
+    - family-names: Rondina
+      given-names: Marco
+    - family-names: Vetrò
+      given-names: Antonio
+    - family-names: De Martin
+      given-names: Juan Carlos
+  year: 2026
+  conference:
+    name: "Fundamental Approaches to Software Engineering (FASE), ETAPS"
